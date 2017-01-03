@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from web_driver.app_list_scroll_driver import AppListScrollDriver
+
+
+class SearchWebDriver(AppListScrollDriver):
+    def __init__(self, url, db_conn, logger):
+        self.logger = logger
+        AppListScrollDriver.__init__(self, url, db_conn, logger)
+
+    def search(self):
+        self.load_store_package_names()
+
+
