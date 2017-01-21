@@ -23,6 +23,3 @@ class ScrollDriver:
                 if cur_height == last_height:
                     break
             last_height = cur_height
-
-
-

@@ -80,12 +80,14 @@ class CategoryConsumer:
         except Exception:
             self.logger.exception('Connect database error')
 
+    # see more
     def _parse_detail_urls(self, category):
         detail_urls = set()
         category_url = '%s/%s' % (CATEGORY_HOST_URL, category)
         try:
             response = requests.get(category_url)
             if response.status_code == requests.codes.ok:
+                # html is from lxml to parse html page
                 html_tree = html.fromstring(response.content)
                 category_detail_links = html_tree.xpath('//a[@class="see-more play-button small id-track-click apps id-responsive-see-more"]//@href')
                 for category_detail_link in category_detail_links:
@@ -130,13 +132,6 @@ class MultipleConsumer:
 if __name__ == '__main__':
     multiple_consumer = MultipleConsumer(1)
     multiple_consumer.start()
-
-
-
-
-
-
-
 
 
 
